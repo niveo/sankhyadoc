@@ -1,0 +1,41 @@
+# Configurações para exclusão de pastas temporárias antes da inicialização do Wildfly
+
+alias rmltwprod='rm -rf /home/mgeweb/wildfly_producao/standalone/log home/mgeweb/wildfly_producao/standalone/tmp /home/mgeweb/wildfly_producao/standalone/work'
+alias rmltwteste='rm -rf /home/mgeweb/wildfly_teste/standalone/log /home/mgeweb/wildfly_teste/standalone/tmp /home/mgeweb/wildfly_teste/standalone/work'
+alias rmltwtreina='rm -rf /home/mgeweb/wildfly_treina/standalone/log /home/mgeweb/wildfly_treina/standalone/tmp /home/mgeweb/wildfly_treina/standalone/work'
+
+# Configuração para inicialização do Wildfly
+
+alias jb_startprod=' killprod; rmltwprod; nohup /home/mgeweb/wildfly_producao/bin/standalone.sh -bmanagement 0.0.0.0 >& /dev/null &'
+alias jb_starttreina=' killtreina; rmltwtreina; nohup /home/mgeweb/wildfly_treina/bin/standalone.sh -bmanagement 0.0.0.0 >& /dev/null &'
+alias jb_startteste=' killteste; rmltwteste; nohup /home/mgeweb/wildfly_teste/bin/standalone.sh -bmanagement 0.0.0.0 >& /dev/null &' 
+
+# Configuração para ver log
+
+alias jb_logprod='tail -f /home/mgeweb/wildfly_producao/standalone/log/server.log'
+alias jb_logtreina='tail -f /home/mgeweb/wildfly_treina/standalone/log/server.log'
+alias jb_logteste='tail -f /home/mgeweb/wildfly_teste/standalone/log/server.log'
+
+# Configuração para execução do Wildfly
+
+alias jb_psprod='ps ax | grep wildfly_producao'
+alias jb_psteste='ps ax | grep wildfly_teste'
+alias jb_pstreina='ps ax | grep wildfly_treina'
+
+# Configuração para fechar execução Wildfly
+
+alias killprod='ps -ef | awk "/wildfly_producao/ && !/awk/ {print \$2}" | xargs kill -9 2>> /dev/null'
+alias killteste='ps -ef | awk "/wildfly_teste/ && !/awk/ {print \$2}" | xargs kill -9 2>> /dev/null'
+alias killtreina='ps -ef | awk "/wildfly_treina/ && !/awk/ {print \$2}" | xargs kill -9 2>> /dev/null'
+
+# Para consulta de processos SAS
+
+alias sas='ps aux | grep SAS'
+#Parar o SAS
+alias stopsas='/opt/NOME_SAS/protstop.sh'
+#iniciar o SAS
+alias startsas='/opt/NOME_SAS/protstart.sh'
+
+# Atalho para o Gerenciador de Pacotes
+
+alias pkg='/home/mgeweb/sankhyaW_gerenciador_de_pacotes/bin/./sankhyaw-package-manager'

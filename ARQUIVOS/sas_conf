@@ -1,0 +1,15 @@
+#Arquivo de configurações do SAS - Gerado pelo instalador.
+#Fri Oct 20 18:53:32 BRST 2017
+client.response.timeout=50000
+client.ping.interval=50000
+connection.url=
+module.multi.host=true
+driver.classname=
+package.name=
+db.vendor=
+product.line=MGE
+db.username=
+ping=client
+server.timeout=50000
+db.password=
+

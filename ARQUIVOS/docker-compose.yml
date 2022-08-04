@@ -1,0 +1,43 @@
+version: '3.9'
+services:
+  sankhyaw:
+    init: true
+    stdin_open: true
+    tty: true 
+    image: sankhyaw:TAG
+    container_name: sankhyaw
+    build:
+     context: .
+     args:
+     - TAG=
+     - PKG_JAVA=
+     - PKG_SAS=
+     - SENHA=
+    ports:
+      - "8180:8180"
+      - "8280:8280"
+      - "8380:8380"
+      - "10050:10050"
+      - "10051:10051"
+      - "1433:1433"
+      - "1521:1521" 
+    volumes:
+      - ./VOLUME/arquivos/.sw_file_repository:/home/mgeweb/.sw_file_repository
+      - ./VOLUME/arquivos/TEMP:/home/mgeweb/temp
+      - ./VOLUME/arquivos/modelos:/home/mgeweb/modelos
+      - ./VOLUME/arquivos/Arquivos_Sankhya:/home/mgeweb/Arquivos_Sankhya
+      - ./VOLUME/java/NOME_JAVA:/home/mgeweb/NOME_JAVA
+      - ./VOLUME/wildfly/wildfly_producao:/home/mgeweb/wildfly_producao
+      - ./VOLUME/wildfly/wildfly_teste:/home/mgeweb/wildfly_teste
+      - ./VOLUME/wildfly/wildfly_treina:/home/mgeweb/wildfly_treina
+      - ./VOLUME/pacote/sankhyaW_gerenciador_de_pacotes:/home/mgeweb/sankhyaW_gerenciador_de_pacotes
+      - ./VOLUME/sas/NOME_SAS:/opt/NOME_SAS
+    extra_hosts:
+      - "localhost.localdomain:127.0.0.1"
+      - "localhost4:127.0.0.1"
+      - "localhost4.localdomain4:127.0.0.1"
+      - "localhost.localdomain:::1"
+      - "localhost6:::1"
+      - "localhost6.localdomain6:::1"
+      - "sankhyaw.com:192.168.0.129"
+    network_mode: "bridge"

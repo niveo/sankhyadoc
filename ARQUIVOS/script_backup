@@ -1,0 +1,37 @@
+echo '
+pkg# Rotina de Backup Pasta modelos
+
+####################################
+####### "Carrega variáveis" ########
+####################################
+
+export NLS_LANG=AMERICAN_AMERICA.WE8ISO8859P1
+export DATA_ATUAL=$(date "+%Y-%m-%d-%H")
+source /home/mgeweb/.bash_profile
+
+###########################
+####### "Grava Log"########
+###########################
+
+
+echo `date`"====== Iniciando Backup ["$DATA_ATUAL"] ========" >> /backupW/logs/Modelos_$DATA_ATUAL.log
+
+# "Deleta arquivos MODELOS dos Ultimos 5 dias"
+
+
+echo -e "\nDeletado arquivos de backup na pasta /backupW/exports! \n"
+find /home/mgeweb/ -name 'server.log.20*' -ctime +15 -exec /bin/rm {} \;
+find /backupW/exports/ -maxdepth 2 -type f -ctime +5 -exec rm -vf \{\} \;
+
+
+###################################
+##### "Compacta arquivo "##########
+###################################
+
+
+cd /backup/exports/
+
+
+tar -czvf Modelos_$DATA_ATUAL.tar.gz /home/mgeweb/modelos /home/mgeweb/.sw_file_repository
+
+echo `date`"====== Fim Backup ["$DATA_ATUAL"] ======== " >> /backupW/logs/Modelos_$DATA_ATUAL.log' > /backupW/scripts/./exportsW.sh
