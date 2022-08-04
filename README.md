@@ -16,6 +16,7 @@ git clone https://github.com/niveo/sankhyadoc
 
 Exemplo versão atual 4.8b442 informar essa mesma versão no arquivo de variáveis *VERSION_SANKHYA
 
+**Não usar uma versão mais nova no caso de migração, para não dar conflitos**
 
 # SAS
 
@@ -63,7 +64,7 @@ ping=client
 
 ### Se MS SQL Server ###
 ```
-package.name=mssql
+package.name=jtds.jar
 db.vendor=mssql
 ```
 
