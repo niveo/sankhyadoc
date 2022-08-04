@@ -1,7 +1,6 @@
-
 # Inicial
 - Docker e Docker Compose Instalado
-- Git instaldo para clone ou [Download](https://github.com/niveo/sankhyadoc)
+- Git instalado para clone ou [Download](https://github.com/niveo/sankhyadoc)
 - Imagem do SO usada Ubuntu 20.04
 
 ## Arquivos e documentação usadas
@@ -13,32 +12,32 @@
 git clone https://github.com/niveo/sankhyadoc
 
 ## Para fazer uma migração verificar qual versão do pacote esta instalado
-`SELECT TEXTO FROM SANKHYA_TREINAMENTO.sankhya.TSIPAR WHERE CHAVE = 'VERSAOSKWDD'`
+`SELECT TEXTO FROM sankhya.TSIPAR WHERE CHAVE = 'VERSAOSKWDD'`
 
 Exemplo versão atual 4.8b442 informar essa mesma versão no arquivo de variáveis *VERSION_SANKHYA
 
 
 # SAS
 
-## Verificar os parametros ip sas e trocar caso necessário.
-```SELECT TEXTO FROM SANKHYA_TREINAMENTO.sankhya.TSIPAR WHERE CHAVE = 'IPSERVACESS'```
+## Verificar os parâmetros ip sas e trocar caso necessário.
+```SELECT TEXTO FROM sankhya.TSIPAR WHERE CHAVE = 'IPSERVACESS'```
 
 Coloque o IP do servidor onde sera instalado o sas
 
-Pode ser usado ip com porta caso tenha trocado no parametro server.port=10051 no sas.cfg
+Pode ser usado ip com porta caso tenha trocado no parâmetro server.port=10051 no sas.cfg
 
 ex: 192.168.0.0:10051
 
 default 10050
 
-```UPDATE SANKHYA_TREINAMENTO.sankhya.TSIPAR SET TEXTO = '192.168.0.0' WHERE CHAVE = 'IPSERVACESS'```
+```UPDATE sankhya.TSIPAR SET TEXTO = '192.168.0.0' WHERE CHAVE = 'IPSERVACESS'```
 
-## Verificar os parametros de diretorio e  trocar caso necessário.
+## Verificar os parâmetros de diretorio e  trocar caso necessário.
 ```
-SELECT TEXTO FROM SANKHYA_TREINAMENTO.sankhya.TSIPAR WHERE CHAVE = 'PATHTEMP'
-SELECT TEXTO FROM SANKHYA_TREINAMENTO.sankhya.TSIPAR WHERE CHAVE = 'SERVDIRMOD'
-UPDATE SANKHYA_TREINAMENTO.sankhya.TSIPAR SET TEXTO = '/home/mgeweb/Arquivos_Sankhya/Layouts' WHERE CHAVE = 'SERVDIRMOD'
-UPDATE SANKHYA_TREINAMENTO.sankhya.TSIPAR SET TEXTO = '/home/mgeweb/temp' WHERE CHAVE = 'PATHTEMP'
+SELECT TEXTO FROM sankhya.TSIPAR WHERE CHAVE = 'PATHTEMP'
+SELECT TEXTO FROM sankhya.TSIPAR WHERE CHAVE = 'SERVDIRMOD'
+UPDATE sankhya.TSIPAR SET TEXTO = '/home/mgeweb/Arquivos_Sankhya/Layouts' WHERE CHAVE = 'SERVDIRMOD'
+UPDATE sankhya.TSIPAR SET TEXTO = '/home/mgeweb/temp' WHERE CHAVE = 'PATHTEMP'
 ```
 
 ## Configuração do sas.cfg
@@ -83,7 +82,7 @@ db.vendor=mssql
 
 # Variáveis 
 Altere as variaves do variaveis.sh conforme requisitos
-
+- URL_SANKHYA=https://grfetvhg7pdl.compat.objectstorage.sa-saopaulo-1.oraclecloud.com
 - SENHA=
 - TAG=0.23
 - PKG_SAS=SAS3.1b16
@@ -94,7 +93,9 @@ Altere as variaves do variaveis.sh conforme requisitos
 - VERSION_SAS=SAS_3_1b16_Sankhya_unixx64.tar.gz
 - VERSION_SANKHYA=sankhya-w_4.8b442.pkg
 
-SENHA=*Esse parametro vai conter a senha do root e do mgeweb
+SENHA=*Esse variável vai conter a senha do root e do mgeweb
+
+Caso a URL de download mude alterar em variaveis.sh e init.sh
 
 Execute sh init.sh para criar o ambiente
 
@@ -102,7 +103,6 @@ Execute sh init.sh para criar o ambiente
 # Docker
 ## Iniciar o container
 ```sudo docker-compose -f docker-compose.yml up -d```
-
 
 ## Pegar o containerID EX 643b78c2184c
 `sudo docker ps -a`
@@ -112,8 +112,20 @@ Execute sh init.sh para criar o ambiente
 
 # Dentro do Sistema
 
-## Após instalar entrar no container e executar /home/mgeweb/Download/script.sh  para dar permissões
-`sh script.sh`
+## Após instalar entrar no container e executar o script.sh para dar permissões
+`sh /home/mgeweb/Download/script.sh`
+
+## Configurando o banco no gerenciador de pacotes
+1. Digite `pkg` 
+2. No terminal opção [2] 
+3. Escolha a opção do servidor
+4. No terminal opção [1] 
+
+## Instalando o sankhya no gerenciador de pacotes
+1. Digite `pkg` 
+2. No terminal opção [1] - S
+3. Escolha a opção do servidor
+4. Escolha o pacote
 
 ## Iniciar sas
 `sasstart`
@@ -125,4 +137,4 @@ Execute sh init.sh para criar o ambiente
 `CTRL+p+q`
 
 
-#Para subir o container e widlfly e sas automaticamente fica a critério do consultor.
+#Para subir o container e widlfly e sas automaticamente fica a critério do consultor ou futura atualização aqui.
