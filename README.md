@@ -121,8 +121,8 @@ Execute sh init.sh para criar o ambiente
 ## Iniciar wildfly/jboss
 `jb_starttreina`
 
-## Sair sem matar o serviço
+## Sair sem matar o serviço no docker
 `CTRL+p+q`
 
 
-#Para subir o widlfly e sas automaticamente fica a critério do consultor.
+#Para subir o container e widlfly e sas automaticamente fica a critério do consultor.
