@@ -98,7 +98,11 @@ SENHA=*Esse variável vai conter a senha do root e do mgeweb
 
 Caso a URL de download mude alterar em variaveis.sh e init.sh
 
-Execute sh init.sh para criar o ambiente
+***Execute para criar o ambiente***
+
+```sh init.sh```
+
+Esse processo vai baixar todos os arquivos  do sankhya e criar pastas funcionais, criar uma imagem com o docker Dockerfile com uma estrutura basica do linux com usuário mgeweb e vai ser criado um container com a orquestração do docker-compose.yml com o VOLUME com os arquivos do sas, java, wildfly e outros.
 
 
 # Docker
